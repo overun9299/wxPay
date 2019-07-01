@@ -1,0 +1,29 @@
+server:
+  port: 9800
+  servlet:
+    context-path: /wxpay
+
+
+
+wx:
+  appid:
+  loginUrl: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code
+  secret:
+  mchId:
+  spbillCreateIp: 000.00.00.00
+  notifyUrl: http://www.overun.top/wxpay/notify
+  tradeType: JSAPI
+  url: https://api.mch.weixin.qq.com/pay/unifiedorder
+  key:
+
+
+
+http:
+  proxy:
+    active: false
+    host: proxy6.shop.com
+    port: 8080
+  timeout:
+    connect: 100000
+    read: 100000
+
