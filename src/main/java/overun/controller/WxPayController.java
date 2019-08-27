@@ -40,6 +40,12 @@ public class WxPayController {
 
     private static Logger logger = LoggerFactory.getLogger(WxPayController.class);
 
+
+    /**
+     * 登陆微信小程序，获取用户openId等信息
+     * @param code
+     * @return
+     */
     @ApiImplicitParam(name = "code", value = "043NadsE0EToPj2bhZuE0Hs8sE0NadsU",defaultValue = "043NadsE0EToPj2bhZuE0Hs8sE0NadsU", paramType = "query", required = true)
     @ApiOperation(value = "微信登陆小程序", notes = "微信登陆小程序")
     @RequestMapping(value = "/login",method = {RequestMethod.GET}, produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -53,6 +59,11 @@ public class WxPayController {
     }
 
 
+    /**
+     * 支付接口
+     * @param wxPayOrderVo
+     * @return
+     */
     @ApiOperation(value = "点击订单付款", notes = "点击订单付款")
     @RequestMapping(value = "/buy",method = {RequestMethod.POST})
     @ResponseBody
@@ -64,9 +75,15 @@ public class WxPayController {
     }
 
 
+    /**
+     * 微信回调函数用于支付成功后处理自己的业务逻辑
+     * @param request
+     * @return
+     */
     @CrossOrigin
     @ResponseBody
     @RequestMapping(value = "notify" )
+    @ApiOperation(value = "微信回调函数", notes = "微信回调函数")
     public String notify(HttpServletRequest request) {
         BufferedReader br = null;
         try {
